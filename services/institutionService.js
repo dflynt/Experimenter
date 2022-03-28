@@ -1,5 +1,5 @@
 const queries = require('../repositories/institutionRepository');
-const dbService = require('../services/DataBaseService');
+const dbService = require('./DataBaseService');
 
 module.exports = {
     createInstitution: function(institutionFields, res) {

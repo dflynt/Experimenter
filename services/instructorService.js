@@ -19,7 +19,7 @@ module.exports = {
         dbService.executeDatabaseQuery(queries.deleteInstructorSQL, [instructorId], res);
     },
 
-    updateInstructor: function(instructorFields, instructorFields, res) {
+    updateInstructor: function(instructorId, instructorFields, res) {
         let sql = queries.updateInstructorSQL;
         let fieldsToSet = "";
         for(let field in instructorFields) {
@@ -28,6 +28,6 @@ module.exports = {
         fieldsToSet = fieldsToSet.substring(0, fieldsToSet.length - 2);
         sql = sql.replace("<replace>", fieldsToSet + " ");
 
-        dbService.executeDatabaseQuery(sql, [instructorFields], res);
+        dbService.executeDatabaseQuery(sql, [instructorId], res);
     }
 }
