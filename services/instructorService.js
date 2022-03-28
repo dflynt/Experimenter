@@ -15,12 +15,12 @@ module.exports = {
         dbService.executeDatabaseQuery(queries.selectInstructorSQL, [instructorId], res);
     },
 
-    deleteInstructor: function(instructorId, res) {
-        dbService.executeDatabaseQuery(queries.deleteInstructorSQL, [instructorId], res);
-    },
-
     updateInstructor: function(instructorId, instructorFields, res) {
         sql = dbService.parseUpdateParameters(queries.updateInstructorSQL, instructorFields);
         dbService.executeDatabaseQuery(sql, [instructorId], res);
-    }
+    },
+    
+    deleteInstructor: function(instructorId, res) {
+        dbService.executeDatabaseQuery(queries.deleteInstructorSQL, [instructorId], res);
+    },
 }
