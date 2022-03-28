@@ -1,14 +1,6 @@
 const queries = require('../repositories/experimentRepository');
 const dbService = require('../services/DataBaseService');
-const mysql = require('mysql');
-let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Applesauce11!',
-    database: 'experimenterdb'
-});
 
-connection.connect();
 module.exports = {
     createExperiment: function(experimentFields, res) {
         let params = [];
@@ -35,7 +27,7 @@ module.exports = {
         }
         fieldsToSet = fieldsToSet.substring(0, fieldsToSet.length - 2);
         sql = sql.replace("<replace>", fieldsToSet + " ");
-        
+
         dbService.executeDatabaseQuery(sql, [experimentId], res);
     },
 

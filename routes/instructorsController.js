@@ -13,7 +13,7 @@ router.use(logRequest);
 
 router.route('/instructor/:instructorId')
     .get((req, res) => {
-        service.getInstructor(req.params.instructorId, res);
+        service.selectInstructor(req.params.instructorId, res);
     })
     .post(bodyParser, (req, res) => {
         service.createInstructor(req.body.instructor, res);
