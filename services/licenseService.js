@@ -11,14 +11,7 @@ module.exports = {
     },
 
     updateLicense: function(licenseId, licenseFields, res) {
-        let sql = queries.updateLicenseSQL;
-        let fieldsToSet = "";
-        for(let field in licenseFields) {
-            fieldsToSet += field + "=" + licenseFields[field] + ", ";
-        }
-        fieldsToSet = fieldsToSet.substring(0, fieldsToSet.length - 2);
-        sql = sql.replace("<replace>", fieldsToSet + " ");
-
+        sql = dbService.parseUpdateParameters(queries.updateLicenseSQL, licenseFields)
         dbService.executeDatabaseQuery(sql, [licenseId], res);
     },
 

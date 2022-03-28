@@ -20,14 +20,7 @@ module.exports = {
     },
 
     updateExperiment: function(experimentId, experimentFields, res) {
-        let sql = queries.updateExperimentSQL;
-        let fieldsToSet = "";
-        for(let field in experimentFields) {
-            fieldsToSet += field + "=" + experimentFields[field] + ", ";
-        }
-        fieldsToSet = fieldsToSet.substring(0, fieldsToSet.length - 2);
-        sql = sql.replace("<replace>", fieldsToSet + " ");
-
+        sql = dbService.parseUpdateParameters(queries.updateExperimentSQL, experimentFields);
         dbService.executeDatabaseQuery(sql, [experimentId], res);
     },
 

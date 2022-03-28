@@ -20,14 +20,7 @@ module.exports = {
     },
 
     updateInstructor: function(instructorId, instructorFields, res) {
-        let sql = queries.updateInstructorSQL;
-        let fieldsToSet = "";
-        for(let field in instructorFields) {
-            fieldsToSet += field + "=" + instructorFields[field] + ", ";
-        }
-        fieldsToSet = fieldsToSet.substring(0, fieldsToSet.length - 2);
-        sql = sql.replace("<replace>", fieldsToSet + " ");
-
+        sql = dbService.parseUpdateParameters(queries.updateInstructorSQL, instructorFields);
         dbService.executeDatabaseQuery(sql, [instructorId], res);
     }
 }

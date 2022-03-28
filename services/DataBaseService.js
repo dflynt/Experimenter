@@ -17,5 +17,17 @@ module.exports = {
             console.log(results);
             res.send(results);
         })
+    },
+
+    parseUpdateParameters: function(baseQuery, params) {
+        let sql = baseQuery;
+        let fieldsToSet = "";
+        for(let field in params) {
+            fieldsToSet += field + "=" + params[field] + ", ";
+        }
+        fieldsToSet = fieldsToSet.substring(0, fieldsToSet.length - 2);
+        sql = sql.replace("<replace>", fieldsToSet + " ");
+
+        return sql;
     }
 }

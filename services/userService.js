@@ -16,15 +16,7 @@ module.exports = {
     },
 
     updateUser: function(userId, userFields, res) {
-        let sql = queries.updateUserSQL;
-        let fieldsToSet = "";
-        for(let field in userFields) {
-            fieldsToSet += field + "=" + userFields[field] + ", ";
-        }
-        fieldsToSet = fieldsToSet.substring(0, fieldsToSet.length - 2);
-        console.log(fieldsToSet);
-        sql = sql.replace("<replace>", fieldsToSet + " ");
-
+        sql = dbService.parseUpdateParameters(queries.updateUserSQL, userFields);
         dbService.executeDatabaseQuery(sql, [userId], res);
     },
 
