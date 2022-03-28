@@ -23,7 +23,7 @@ module.exports = {
 
     selectAllExperimentsSQL: `
                                 SELECT *
-                                FROm Experiments e
+                                FROM Experiments e
                                 WHERE e.author = ?
                                 `,
     
