@@ -1,9 +1,9 @@
 const express = require('express');
-const instructors = require('./routes/instructorsController');
-const experiments = require('./routes/experimentsController');
-const users = require('./routes/usersController');
-const institutions = require('./routes/institutionsController');
-const licenses = require('./routes/licensesController');
+const instructors = require('./src/routes/instructorsController');
+const experiments = require('./src/routes/experimentsController');
+const users = require('./src/routes/usersController');
+const institutions = require('./src/routes/institutionsController');
+const licenses = require('./src/routes/licensesController');
 
 const app = express();
 const port = 3000;

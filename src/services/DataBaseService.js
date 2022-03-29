@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+
 let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -17,6 +18,15 @@ module.exports = {
             console.log(results);
             res.send(results);
         })
+    },
+
+    retrieveUserForLogin: function(query, params, callback) {
+        connection.query(query, params, (error, results) => {
+            if(error) {
+                callback(JSON.parse(JSON.stringify(results[0])));
+            }
+            callback(JSON.parse(JSON.stringify(results[0])));
+            })
     },
 
     parseUpdateParameters: function(baseQuery, params) {

@@ -24,4 +24,8 @@ router.route('/user/:userId')
         service.deleteUser(req.params.userId, res)
     })
 
+router.post('/login/:userId', bodyParser, (req, res) => {
+    service.attemptLogin(req.params.userId, req.body.user, res);
+});
+
 module.exports = router;
